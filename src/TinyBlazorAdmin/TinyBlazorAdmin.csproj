@@ -21,7 +21,6 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="5.0.0" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.0" />
-    <PackageReference Include="System.Runtime.Intrinsics" Version="4.0.0" />
   </ItemGroup>
 
 </Project>
