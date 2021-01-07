@@ -13,7 +13,7 @@ namespace TinyBlazorAdmin
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<App>("#app");
 
             // set up a delegate to get function token
             static string functionEndpoint(WebAssemblyHostBuilder builder) =>
@@ -34,7 +34,7 @@ namespace TinyBlazorAdmin
 
             // set up DI
             builder.Services.AddTransient<AzFuncAuthorizationMessageHandler>();
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             // configure the client to talk to the Azure Functions endpoint.
             builder.Services.AddHttpClient(nameof(UrlShortenerSecuredService),

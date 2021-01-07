@@ -44,7 +44,7 @@ namespace TinyBlazorAdmin.Data
         public async Task<ShortUrlList> GetUrlList()
         {
             string result = string.Empty;
-            var resultList = await _client.GetJsonAsync<ShortUrlList>($"/api/UrlList");
+            var resultList = await _client.GetFromJsonAsync<ShortUrlList>($"/api/UrlList");
             return resultList;
         }
 
