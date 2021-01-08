@@ -32,8 +32,8 @@ else
             @foreach (var url in UrlList.UrlList)
             {
                 <tr>
-                    <td><button type="button" class="btn btn-outline-primary btn-sm" @onclick="@(() => CopyToClipboardAsync(url.ShortUrl))">Copy</button></td>
-                    <td><a href="@url.ShortUrl" target="blank">@url.RowKey</a></td>
+                    <td><button type="button" class="btn btn-outline-primary btn-sm" @onclick="@(() => CopyToClipboardAsync("https://" + url.ShortUrl))">Copy</button></td>
+                    <td><a href='@("https://" + url.ShortUrl)' target="blank">@url.RowKey</a></td>
                     <td>
                         <span>@url.Title</span>
                     </td>
