@@ -21,14 +21,12 @@ namespace TinyBlazorAdmin
                     .GetSection(nameof(UrlShortenerSecuredService))
                     .GetValue<string>(nameof(AzFuncAuthorizationMessageHandler.Endpoint));
 
-            // sets up AAD + user_impersonation to access functions.
-            builder.Services.AddMsalAuthentication(options =>
+            builder.Services.AddOidcAuthentication(options =>
             {
-                options.ProviderOptions
-                .DefaultAccessTokenScopes.Add("https://graph.microsoft.com/User.Read");
-                //options.ProviderOptions
-                //.AdditionalScopesToConsent.Add($"{functionEndpoint(builder)}user_impersonation");
-                builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
+                // Replace the Okta placeholders with your Okta values in the appsettings.json file.
+                options.ProviderOptions.Authority = builder.Configuration.GetValue<string>("Okta:Authority");
+                options.ProviderOptions.ClientId = builder.Configuration.GetValue<string>("Okta:ClientId"); ;
+                options.ProviderOptions.ResponseType = "code";
             });
 
 
